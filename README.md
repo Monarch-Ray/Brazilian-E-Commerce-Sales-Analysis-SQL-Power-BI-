@@ -66,12 +66,61 @@ A star schema was designed to support efficient analytics and BI reporting.
 
 ## 📌 Business Questions & Insights
 How has revenue evolved over time?
+- Total revenue of ₦16.64M shows clear seasonality, with sales peaking around mid-year and declining toward the later months.
+- Business implication:
+Marketing campaigns, inventory planning, and logistics capacity should be aligned with peak sales periods to maximize revenue and reduce operational bottlenecks.
 
-Insight:
-Revenue shows a clear time-based pattern, with noticeable peaks during specific months and lower performance during off-peak periods.
+Which product categories generate the most revenue?
+- Insight:
+Revenue is highly concentrated in a small number of product categories, with top categories collectively contributing the majority of the ₦16.64M total revenue.
+- Business implication:
+Prioritizing high-performing categories for promotions, pricing optimization, and supplier partnerships can significantly increase overall revenue.
 
-Business implication:
-This indicates seasonality in customer demand. Marketing campaigns, inventory planning, and logistics capacity should be aligned with peak sales periods to maximize revenue and minimize stockouts.
+ Which states generate the highest number of orders?
+- Insight:
+Customer orders (99,441 total orders) are concentrated in a few key states, particularly São Paulo (SP), followed by other major commercial regions.
+- Business implication:
+Strengthening logistics infrastructure and delivery efficiency in high-demand states can improve customer experience and reduce shipping costs.
 
+ Who are the top-performing sellers?
+- Insight:
+A small group of sellers accounts for a disproportionately large share of the 99,441 total orders and ₦16.64M in revenue.
+- Business implication:
+Implementing retention and incentive programs for top sellers can stabilize revenue and reduce reliance on lower-performing sellers.
 
+ What is the average order value (AOV)?
+- Insight:
+The average order value is ₦167.37, indicating moderate per-transaction spending across the platform.
+- Business implication:
+Upselling, cross-selling, and bundled offers could help increase AOV and maximize revenue without increasing customer acquisition costs.
+
+Is there a relationship between delivery cost and customer review scores?
+- Insight:
+Despite high order volume, the average review score stands at 4.02, suggesting generally positive customer satisfaction, though delivery costs may still influence ratings.
+- Business implication:
+Optimizing shipping costs and delivery timelines could further improve customer satisfaction and long-term retention.
+
+ How do order statuses impact revenue?
+- Insight:
+While total orders reached 99,441, cancelled or unavailable orders represent lost revenue opportunities.
+- Business implication:
+Reducing order cancellations through better inventory forecasting and seller reliability checks can directly improve realized revenue.
+
+ Which product categories have the lowest customer satisfaction?
+- Insight:
+Some product categories consistently receive lower review scores compared to the overall average of 4.02.
+- Business implication:
+Targeted quality control and logistics improvements in low-rated categories can improve customer perception and reduce negative reviews.
+
+ How is customer demand distributed geographically?
+- Insight:
+Customer demand is unevenly distributed across Brazil, with higher concentration in economically active states.
+- Business implication:
+Expanding logistics coverage and targeted marketing in underrepresented regions presents growth opportunities.
+
+ Are customers making repeat purchases?
+- Insight:
+With 99,441 total customers and 99,441 total orders, repeat purchasing behavior appears limited.
+- Business implication:
+Introducing loyalty programs, personalized recommendations, and retention campaigns could significantly increase customer lifetime value.
 
