@@ -64,7 +64,14 @@ A star schema was designed to support efficient analytics and BI reporting.
 
 
 
+## 📌 Business Questions & Insights
+How has revenue evolved over time?
 
+Insight:
+Revenue shows a clear time-based pattern, with noticeable peaks during specific months and lower performance during off-peak periods.
+
+Business implication:
+This indicates seasonality in customer demand. Marketing campaigns, inventory planning, and logistics capacity should be aligned with peak sales periods to maximize revenue and minimize stockouts.
 
 
 
