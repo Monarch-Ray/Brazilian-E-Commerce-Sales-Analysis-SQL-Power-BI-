@@ -57,3 +57,14 @@ A star schema was designed to support efficient analytics and BI reporting.
 - dim_products – product categories and physical attributes
 - dim_sellers – seller location and identifiers
 - dim_geolocation (optional) – geographic mapping support
+
+## Visualization
+
+<img width="892" height="497" alt="dashboard overview" src="https://github.com/user-attachments/assets/2bf4c546-237d-469b-9799-4a46a41cd506" />
+
+
+
+
+
+
+
