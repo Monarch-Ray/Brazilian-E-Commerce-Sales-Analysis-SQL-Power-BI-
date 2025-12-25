@@ -61,21 +61,30 @@ A star schema was designed to support efficient analytics and BI reporting.
  ## 🧹 Data Cleaning & Preparation (SQL)
  The raw Olist e-commerce dataset was imported into Microsoft SQL Server and systematically cleaned and prepared to ensure accuracy, consistency, and analytical readiness before visualization in Power BI.
  - Standardize types & handle missing values
+```sql
    ALTER TABLE raw_orders ALTER COLUMN order_purchase_timestamp DATETIME;
 DELETE FROM raw_orders WHERE order_id IS NULL;
-- Remove duplicates
 
+```
+- Remove duplicates
+  
+```sql
 WITH cte AS (
   SELECT *, ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY order_id) rn
   FROM raw_orders
 )
 DELETE FROM cte WHERE rn > 1;
+```
+
 - Create fact & dimension tables
+```sql
 
 SELECT o.order_id, o.customer_id, i.product_id, i.price
 INTO fact_orders
 FROM raw_orders o
 JOIN raw_order_items i ON o.order_id = i.order_id;
+
+```
 
 
 Outcome
