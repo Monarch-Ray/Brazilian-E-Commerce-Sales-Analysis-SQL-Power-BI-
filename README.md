@@ -1,4 +1,4 @@
-# Brazilian-E-Commerce-Sales-Analysis-SQL-Power-BI-
+# Olist-Ecommerce-Data-Analysis-SQL-Power-BI-
 📌 Project Overview
 
 This project presents an end-to-end data analytics workflow using the Olist Brazilian E-Commerce dataset. The goal was to transform raw transactional data into actionable business insights by applying SQL-based data modeling and Power BI visualization.
