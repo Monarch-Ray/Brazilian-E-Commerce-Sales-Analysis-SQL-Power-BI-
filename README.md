@@ -60,88 +60,30 @@ A star schema was designed to support efficient analytics and BI reporting.
 
  ## 🧹 Data Cleaning & Preparation (SQL)
  The raw Olist e-commerce dataset was imported into Microsoft SQL Server and systematically cleaned and prepared to ensure accuracy, consistency, and analytical readiness before visualization in Power BI.
+ - Standardize types & handle missing values
+   ALTER TABLE raw_orders ALTER COLUMN order_purchase_timestamp DATETIME;
+DELETE FROM raw_orders WHERE order_id IS NULL;
+- Remove duplicates
 
-1. Data Type Standardization
-  - Converted columns imported as text to appropriate numeric and date data types.
-  - Ensured monetary values (price, freight_value, payment_value) were stored as DECIMAL.
-  - Converted date fields (order_purchase_timestamp, order_delivered_customer_date, order_estimated_delivery_date) to DATETIME.
-  Purpose:
-  - Prevents calculation errors and ensures accurate aggregations in Power BI.
+WITH cte AS (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY order_id) rn
+  FROM raw_orders
+)
+DELETE FROM cte WHERE rn > 1;
+- Create fact & dimension tables
 
-2. Handling Missing and Invalid Values
-  - Identified and handled NULL values in key fields such as:
-  - Customer location
-  - Product weight and dimensions
+SELECT o.order_id, o.customer_id, i.product_id, i.price
+INTO fact_orders
+FROM raw_orders o
+JOIN raw_order_items i ON o.order_id = i.order_id;
 
-  Review scores
-  - Excluded records with missing primary keys (order_id, customer_id).
-  - Retained valid incomplete records where business logic allowed (e.g., undelivered orders).
-
-  Purpose:
-  - Preserves data integrity while avoiding unnecessary data loss.
-
-3. Duplicate Record Removal
-  - Removed duplicate rows using primary key checks and row number logic.
-
-Ensured uniqueness across:
-  - Orders
-  - Customers
-  - Sellers
-  - Products
-
-  Purpose:
-  - Prevents inflated KPIs such as total revenue and order count.
-4. Creation of Fact and Dimension Tables
-  - The dataset was transformed into a star schema for efficient analysis.
-  - Fact Table
-  - fact_orders
-  - order_id
-  - customer_id
-  - seller_id
-  - product_id
-  - payment_value
-  - order_status
-  - purchase_date
-  - delivery_date
-
-Dimension Tables
-  - dim_customers – customer demographics and location
-  - dim_products – product attributes and categories
-  - dim_sellers – seller location details
-  - dim_payments – payment type and installment data
-  - dim_reviews – customer review scores and feedback
-  - dim_date – derived calendar attributes (year, month, day)
-
-  Purpose:
-  - Optimizes Power BI performance and enables clear relationship modeling.
-
-5. Data Enrichment & Feature Engineering
-  - Translated product category names from Portuguese to English using lookup tables.
-  - Derived additional fields such as:
-  - Order delivery delay (actual vs estimated)
-  - Order month and year for time-series analysis
-  - Created calculated fields for analytics readiness.
-
-  Purpose:
-  - Improves interpretability and supports business-level insights.
-
-6. Referential Integrity Enforcement
-  - Established primary and foreign key relationships between fact and dimension tables.
-  - Validated joins to ensure no orphan records exist.
-
-  Purpose:
-  - Ensures reliable slicing and filtering across dashboards.
-
-7. Validation & Quality Checks
-  - Verified row counts before and after transformation.
-  - Cross-checked total revenue and order counts against raw data.
-  - Ensured no negative or unrealistic values exist in numeric fields.
-
-  Purpose:
-  - Guarantees analytical accuracy and stakeholder confidence.
 
 Outcome
   - The cleaned and structured dataset was successfully loaded into Power BI, enabling the creation of an interactive Business Intelligence dashboard that provides insights into revenue trends, customer behavior, product performance, and geographic distribution across Brazil.
+
+## 🛠️ Tools & Technologies
+- SQL: Data cleaning, joins, transformations, and analysis
+- Power BI: Data modeling, DAX measures, and dashboard creation
 
 ## Visualization
 
@@ -210,7 +152,18 @@ With 99,441 total customers and 99,441 total orders, repeat purchasing behavior 
 - Business implication:
 Introducing loyalty programs, personalized recommendations, and retention campaigns could significantly increase customer lifetime value.
 
-## 🛠️ Tools & Technologies
-- SQL
-- Power BI
+
+## Recommendations
+
+ - Prioritize high-revenue product categories by increasing marketing and inventory investment in top performers such as home, beauty, and lifestyle products.
+
+ - Improve delivery performance to reduce late orders, as delivery delays are strongly linked to lower customer review scores.
+
+ - Optimize seller performance by region by replicating best practices from high-performing states (e.g., São Paulo) across underperforming regions.
+
+ - Leverage geographic insights to run targeted campaigns in low-penetration states and drive demand growth.
+
+ - Increase average order value (AOV) through product bundling, cross-selling, and promotional incentives.
+
+
 
